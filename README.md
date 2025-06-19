@@ -45,6 +45,8 @@ Following extensive investigation, the following factors were identified as crit
 
 > *These findings are documented in detail in the file `docs/log_investigacion_inhibicion_G1.md`.*
 
+---
+
 ## 🎬 Demonstration
 
 To visualize the behavior of a simple agent controlled by these principles, a 2D environment was created. The agent learns to seek "food" (activation points).
@@ -55,4 +57,15 @@ To visualize the behavior of a simple agent controlled by these principles, a 2D
 
 | Agent in Action |
 | :---: | 
-![Agent in action](media/Food.gif) |
+| ![Agent in action](media/Food.gif) |
+
+---
+
+## 📱 Social Media
+
+Stay updated on our progress and connect with us:
+
+- 🌐 **Instagram**: [@netech.ai](https://www.instagram.com/netech.ai/)
+- 🐦 **X (Twitter)**: [@Netech_AI](https://x.com/Netech_AI)
+
+---
