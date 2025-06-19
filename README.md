@@ -54,4 +54,5 @@ To visualize the behavior of a simple agent controlled by these principles, a 2D
 | ![Neural network evolution](media/Evolution_food.png) | 
 
 | Agent in Action |
+| :---: | :---: |
 ![Agent in action](media/Food.gif) |
