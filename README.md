@@ -49,10 +49,10 @@ Following extensive investigation, the following factors were identified as crit
 
 To visualize the behavior of a simple agent controlled by these principles, a 2D environment was created. The agent learns to seek "food" (activation points).
 
-| Neural Network Evolution 
-| :---: | :---: |
+| Neural Network Evolution |
+| :---: | 
 | ![Neural network evolution](media/Evolution_food.png) | 
 
 | Agent in Action |
-| :---: | :---: |
+| :---: | 
 ![Agent in action](media/Food.gif) |
