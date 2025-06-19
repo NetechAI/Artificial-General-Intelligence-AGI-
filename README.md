@@ -1,56 +1,54 @@
-# AGI - Bloques de Construcción Neuronales: Detectores de Patrones, Secuencias y Contexto
+# 🧠 Neural Building Blocks: Detectors for Patterns, Sequences, and Context
 
-Este repositorio documenta la investigación y los resultados obtenidos en el desarrollo de microcircuitos neuronales fundamentales para una futura Inteligencia Artificial General (AGI). El enfoque se basa en la creación de detectores especializados inspirados en la neurociencia computacional.
+![License](https://img.shields.io/badge/License-Proprietary-blue.svg) ![Status](https://img.shields.io/badge/Status-Research-green.svg)
 
----
-
-## Visión General
-
-El objetivo de este proyecto es diseñar, simular y validar los bloques de construcción cognitivos más básicos. En lugar de utilizar redes neuronales monolíticas, proponemos un enfoque modular donde diferentes tipos de "neuronas detectoras" se especializan en reconocer patrones específicos en los datos de entrada. Estos detectores son la base para construir sistemas de procesamiento más complejos.
-
-## Arquitectura de Detectores
-
-Hemos definido y probado tres niveles de detectores jerárquicos:
-
-### G1: Detector de Patrones (N_Detector_Patron)
-- **Función:** Es la unidad más básica. Se activa cuando un conjunto específico de neuronas de entrada (un "patrón") dispara simultáneamente.
-- **Mecanismo:** Implementa una forma de coincidencia de patrones. Su membrana solo alcanza el umbral de disparo si recibe estímulos de todas sus fuentes predefinidas en una ventana de tiempo muy corta.
-
-### G2: Detector de Secuencias (N_Detector_Secuencia)
-- **Función:** Reconoce secuencias temporales de activación de patrones. Por ejemplo, se activa solo si el Patrón A dispara, seguido por el Patrón B, y luego el Patrón C (A -> B -> C).
-- **Mecanismo:** Utiliza una constante de tiempo de membrana (`tau_m`) cuidadosamente ajustada. La activación del primer patrón en la secuencia "pre-carga" la neurona, y las activaciones posteriores la empujan por encima del umbral. Si los patrones llegan en el orden incorrecto, el potencial de membrana decae antes de que se complete la secuencia.
-
-### G3: Detector de Contexto (N_Detector_Contexto)
-- **Función:** Es el nivel más abstracto. Se activa cuando un conjunto de secuencias específicas (detectadas por G2) ocurren en un contexto determinado. Por ejemplo, la secuencia A->B->C solo es relevante si la secuencia X->Y->Z también ha ocurrido recientemente.
-- **Mecanismo:** Integra las salidas de múltiples detectores G2, actuando como un detector de "meta-patrones" temporales.
+This repository documents the research and results from the development of fundamental neural microcircuits. The approach is based on creating specialized detectors inspired by computational neuroscience.
 
 ---
 
-## Logro Clave: Aprendizaje Perfecto de Secuencias
+## 🎯 Overview
 
-Uno de los hitos más importantes de esta fase fue lograr un **aprendizaje perfecto y determinista** para un `N_Detector_Secuencia123` encargado de reconocer la secuencia de entrada P1 -> P2 -> P3.
+The project's objective is to design, simulate, and validate the most basic cognitive building blocks. Instead of monolithic neural networks, we propose a modular approach where different types of "detector neurons" specialize in recognizing specific patterns in input data. These detectors form the basis for constructing more complex processing systems.
 
-Tras una extensa investigación, se identificaron los siguientes factores como críticos para el éxito:
+## 🏗️ Detector Architecture
 
-1.  **Inhibición Selectiva:** La neurona detectora de secuencias (`N_Detector_Secuencia123`) **debe ser excluida** del circuito de inhibición general que resetea otras neuronas. Esto le permite mantener su potencial de membrana "cargado" mientras espera los siguientes elementos de la secuencia.
+We have defined and tested three hierarchical levels of detectors:
 
-2.  **Constante de Tiempo de Membrana (`tau_m`) Específica:** Se requiere un valor de `tau_m = 10.0 ms` para esta neurona, a diferencia de otras que usan `7.0 ms`. Este valor es crucial para que el potencial decaiga a la velocidad justa para distinguir la secuencia correcta de las incorrectas.
+### G1: Pattern Detector (`N_Detector_Patron`)
+> **Function:** The most basic unit. It activates when a specific set of input neurons (a "pattern") fires simultaneously.
+> 
+> **Mechanism:** Implements a form of pattern matching. Its membrane potential reaches the firing threshold only if it receives input from all its predefined sources within a very short time window.
 
-3.  **Peso Sináptico Inicial:** Con los parámetros anteriores, un peso inicial de `0.5` en las sinapsis de entrada permite que la plasticidad sináptica (aprendizaje) alcance su máximo (`1.5`) de forma robusta.
+### G2: Sequence Detector (`N_Detector_Secuencia`)
+> **Function:** Recognizes temporal sequences of pattern activations. For example, it activates only if Pattern A fires, followed by Pattern B, and then Pattern C (A -> B -> C).
+> 
+> **Mechanism:** Utilizes a carefully tuned membrane time constant (`tau_m`). The activation of the first pattern in the sequence "pre-charges" the neuron's membrane potential. Subsequent activations build on this potential to push it over the threshold. If patterns arrive in the wrong order, the membrane potential decays before the sequence is completed.
 
-Estos hallazgos se documentan en detalle en el archivo `docs/log_investigacion_inhibicion_G1.md`.
+### G3: Context Detector (`N_Detector_Contexto`)
+> **Function:** The most abstract level. It activates when a specific set of sequences (detected by G2) occurs within a given context. For example, the sequence A->B->C is only relevant if the sequence X->Y->Z has also occurred recently.
+> 
+> **Mechanism:** Integrates the outputs of multiple G2 detectors, acting as a detector for temporal "meta-patterns".
 
-## Demostración
+---
 
-Para visualizar el comportamiento de un agente simple controlado por estos principios, se creó un entorno 2D. El agente aprende a buscar "comida" (puntos de activación).
+## 🔬 Key Achievement: Perfect Sequence Learning
 
-**Evolución de la Red Neuronal:**
+A significant milestone of this research phase was achieving **perfect and deterministic learning** for a `N_Detector_Secuencia123` neuron tasked with recognizing the input sequence P1 -> P2 -> P3.
 
-![Evolución de la red neuronal](media/Evolution_food.png)
+Following extensive investigation, the following factors were identified as critical for success:
 
+1.  **Selective Inhibition:** The sequence detector neuron (`N_Detector_Secuencia123`) **must be excluded** from the general inhibitory circuit. This allows it to maintain its membrane potential while waiting for subsequent elements in the sequence.
 
-**Agente en Acción:**
+2.  **Specific Membrane Time Constant (`tau_m`):** A value of **`10.0 ms`** is required for this neuron (unlike others that use `7.0 ms`). This value is crucial for the potential to decay at the precise rate needed to distinguish the correct sequence.
 
-![Agente en acción](media/Food.gif)
+3.  **Initial Synaptic Weight:** An initial weight of **`0.5`** on the input synapses is sufficient for the synaptic plasticity (learning) to robustly drive the weights to their maximum value (`1.5`).
 
+> *These findings are documented in detail in the file `docs/log_investigacion_inhibicion_G1.md`.*
 
+## 🎬 Demonstration
+
+To visualize the behavior of a simple agent controlled by these principles, a 2D environment was created. The agent learns to seek "food" (activation points).
+
+| Neural Network Evolution | Agent in Action |
+| :---: | :---: |
+| ![Neural network evolution](media/Evolution_food.png) | ![Agent in action](media/Food.gif) |
