@@ -67,5 +67,5 @@ Stay updated on our progress and connect with us:
 
 - 🌐 **Instagram**: [@netech.ai](https://www.instagram.com/netech.ai/)
 - 🐦 **X (Twitter)**: [@Netech_AI](https://x.com/Netech_AI)
-
+-  **Discord**: [@Netech_AI Discord](https://discord.gg/w9RsadnAsW)
 ---
